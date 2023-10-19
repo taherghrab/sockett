@@ -1,6 +1,7 @@
 package client;
 import java.io.IOException;
-
+import java.net.InetAddress;
+import java.net.InetSocketAddress;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.Socket;
@@ -11,8 +12,11 @@ public class client {
     public static void main(String[] args) throws UnknownHostException, IOException {
         // TODO Auto-generated method stub
         System.out.println("je suis un client non connecté ");
-        Socket s = new Socket("localhost", 1237);
-
+       // Socket s = new Socket("localhost", 1237);
+          InetAddress ia = InetAddress.getByName("10.26.12.228");
+			InetSocketAddress isa = new InetSocketAddress(ia,1234);
+			Socket s = new Socket();
+			s.connect(isa);
         System.out.println("je suis connecté ");
         InputStream is = s.getInputStream();
         OutputStream os = s.getOutputStream();
